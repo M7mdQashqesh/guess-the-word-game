@@ -1,0 +1,170 @@
+:root {
+  --primary-color: #f44336;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: #eee;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+  background-color: #fff;
+  padding: 20px;
+  margin: 0 0 50px 0;
+  text-align: center;
+}
+
+.guess-game {
+  width: 1000px;
+  text-align: center;
+  margin: 20px auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.guess-game .game-area .inputs div {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.guess-game .game-area .inputs .in-place {
+  background-color: #18ba89;
+  border-color: #18ba89;
+  color: white;
+}
+
+.guess-game .game-area .inputs .not-in-place {
+  background-color: #f89e13;
+  border: #f89e13;
+  color: white;
+}
+
+.guess-game .game-area .inputs .wrong {
+  background-color: #27303f;
+  border: #27303f;
+  color: white;
+}
+
+.guess-game .game-area .inputs div.disabled-inputs {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.guess-game .game-area .inputs div span {
+  font-size: 25px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.guess-game .game-area .inputs div input {
+  font-size: 30px;
+  width: 50px;
+  height: 50px;
+  caret-color: var(--primary-color);
+  outline: 0;
+  border: none;
+  border-bottom: 3px solid #333;
+  margin: 0 5px;
+  text-align: center;
+}
+
+.guess-game .game-area .control {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  margin: 30px auto;
+  gap: 10px;
+}
+.guess-game .game-area .control button {
+  border: none;
+  font-size: 20px;
+  padding: 15px 20px;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.guess-game .game-area .control button:disabled {
+  background-color: black;
+  opacity: 0.4;
+  cursor: no-drop;
+}
+
+.guess-game .game-area .control .check-btn {
+  background-color: var(--primary-color);
+  flex: 1;
+}
+
+.guess-game .game-area .control .hint-btn {
+  background-color: #009688;
+  width: fit-content;
+}
+
+.guess-game .game-area .message {
+  text-align: center;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.guess-game .game-area .message span {
+  font-weight: bold;
+  display: block;
+  font-size: 50px;
+  color: var(--primary-color);
+  text-transform: capitalize;
+  margin-top: 10px;
+}
+
+.guess-game .game-area .message p {
+  margin-top: 15px;
+}
+
+.guess-game .key-colors .key-color {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  padding: 10px;
+  margin-bottom: 10px;
+  gap: 10px;
+}
+
+.guess-game .key-colors .key-color .key {
+  width: 25px;
+  height: 25px;
+}
+
+.guess-game .key-colors .key-color .key.in-place {
+  background-color: #18ba89;
+}
+
+.guess-game .key-colors .key-color .key.not-in-place {
+  background-color: #f89e13;
+}
+
+.guess-game .key-colors .key-color .key.wrong {
+  background-color: #27303f;
+}
+
+.guess-game .key-colors .key-color .key-text {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+footer {
+  text-align: center;
+  width: 100%;
+  padding: 20px;
+  position: fixed;
+  bottom: 0px;
+  background-color: #333;
+  color: white;
+}
