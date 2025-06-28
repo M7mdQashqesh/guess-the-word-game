@@ -10,6 +10,7 @@ document.querySelector(
 let numberOfInputs = 6;
 let numberOfTries = 5;
 let currentTry = 1;
+let numberOfHints = 2;
 
 // Menage Words
 let words = [
@@ -114,6 +115,7 @@ function handleWord() {
     });
     messageArea.innerHTML = `<p>You Win, The Word Is <span>${randomWord}</span></p>`;
     checkBtn.disabled = true;
+    hintBtn.disabled = true;
   } else {
     document
       .querySelector(`.inputs .try-${currentTry}`)
@@ -134,6 +136,59 @@ function handleWord() {
     } else {
       messageArea.innerHTML = `<p>You Lose, The Word Is <span>${randomWord}</span></p>`;
       checkBtn.disabled = true;
+      hintBtn.disabled = true;
+    }
+  }
+}
+
+let hintBtn = document.querySelector(".hint-btn");
+document.querySelector(".hint-btn span").textContent = numberOfHints;
+hintBtn.addEventListener("click", handleHint);
+
+function handleHint() {
+  if (numberOfHints > 0) {
+    numberOfHints--;
+    document.querySelector(".hint-btn span").textContent = numberOfHints;
+  }
+  if (numberOfHints === 0) {
+    hintBtn.disabled = true;
+  }
+
+  let notDisabledInputs = document.querySelectorAll(`input:not([disabled])`);
+  let emptyInputs = Array.from(notDisabledInputs).filter(
+    (input) => input.value === ""
+  );
+
+  if (emptyInputs.length > 0) {
+    let randomIndex = Math.floor(Math.random() * emptyInputs.length);
+    let randomInput = emptyInputs[randomIndex];
+    let indexToFill = Array.from(notDisabledInputs).indexOf(randomInput);
+
+    // console.log(randomIndex);
+    // console.log(randomInput);
+    // console.log(indexToFill);
+
+    if (indexToFill !== -1) {
+      randomInput.value = randomWord[indexToFill].toUpperCase();
+      randomInput.classList.add("in-place");
+    }
+  }
+}
+
+document.addEventListener("keydown", handleBackspace);
+
+function handleBackspace(e) {
+  if (e.key === "Backspace") {
+    const inputs = document.querySelectorAll(`input:not([disabled])`);
+    let currentIndex = Array.from(inputs).indexOf(document.activeElement);
+
+    if (currentIndex > 0) {
+      let currentInput = inputs[currentIndex];
+      let prevInput = inputs[currentIndex - 1];
+
+      currentInput.value = "";
+      prevInput.value = "";
+      prevInput.focus();
     }
   }
 }
